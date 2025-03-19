@@ -1,0 +1,4 @@
+Las consultas están en la carpeta de recursos separadas como se pidió
+la construcción de la app de consola también están aparadas en una carpeta en recursos, pero hacia conflicto al trabajar con la version web.
+https://github.com/Claudio-Aranguiz/backend_tienda
+elimine la carpeta target porque no daba el pesaje para ser enviado.

@@ -1,0 +1,17 @@
+
+# Maven
+log/
+target/
+.mvn
+mvnw
+mvnw.cmd
+
+# Eclipse
+.classpath
+.project
+.settings/
+.factorypath
+
+# Secrets
+.env
+src/main/resources/application.properties

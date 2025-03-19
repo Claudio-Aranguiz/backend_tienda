@@ -1,0 +1,13 @@
+# Database Configuration
+db.driver=com.mysql.cj.jdbc.Driver
+db.url=jdbc:mysql://localhost:3306/tienda_db?useSSL=false&serverTimezone=UTC
+db.username=your_username_here
+db.password=your_password_here
+
+# Hibernate Configuration
+hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+hibernate.show_sql=true
+hibernate.format_sql=true
+hibernate.hbm2ddl.auto=update
+
+server.port=8080
