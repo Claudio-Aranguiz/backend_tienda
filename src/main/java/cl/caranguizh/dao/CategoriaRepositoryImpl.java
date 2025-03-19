@@ -1,6 +1,11 @@
 package cl.caranguizh.dao;
 
 
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -10,11 +15,6 @@ import org.springframework.stereotype.Repository;
 
 import cl.caranguizh.model.Categoria;
 import cl.caranguizh.repository.CategoriaRepository;
-
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class CategoriaRepositoryImpl implements CategoriaRepository {
@@ -91,15 +91,20 @@ public class CategoriaRepositoryImpl implements CategoriaRepository {
         jdbcTemplate.update(sql, id);
     }
 
-	@Override
-	public List<Categoria> findByNombreContaining(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	@SuppressWarnings("deprecation")
+    @Override
+    public List<Categoria> findByNombreContaining(String nombre) {
+        String sql = "SELECT id, nombre FROM categorias WHERE nombre LIKE ?";
+        return jdbcTemplate.query(sql, new Object[]{"%" + nombre + "%"}, categoriaRowMapper);
+    }
 
-	@Override
-	public List<Categoria> findProductosByCategoriaId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	@SuppressWarnings("deprecation")
+    @Override
+    public List<Categoria> findProductosByCategoriaId(Integer id) {
+        String sql = "SELECT c.id, c.nombre FROM categorias c " +
+                    "JOIN productos p ON p.categoria_id = c.id " +
+                    "WHERE p.categoria_id = ? " +
+                    "GROUP BY c.id, c.nombre";
+        return jdbcTemplate.query(sql, new Object[]{id}, categoriaRowMapper);
+    }
 }
