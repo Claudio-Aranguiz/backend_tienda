@@ -22,7 +22,7 @@ public class MockUpController {
     @Autowired
     private CategoriaRepository categoriaRepository;
     
-    @GetMapping("/mock_up")
+    @GetMapping("/mock_up_v2")
     public String mostrarMockUp(
             @RequestParam(required = false) String busqueda,
             @RequestParam(required = false) Integer categoriaId,

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Bienvenida</title>
+    <!-- Enlace a la hoja de estilos de Bootstrap (CSS) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-1">
+    <!-- Navbar de Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Back Up  Tienda</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link">Bienvenido al Back Up</a> <!-- href="/visita" -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container mt-5">
+        <h4>Seleccione qué desea visitar</h4>
+    </div>
+    <div class="container mt-5 py-3">
+    	<h3>Opciones:</h3>
+    	<a href="/front_mvc/productos" class="btn btn-secondary btn-lg" tabindex="-1" role="button" aria-disabled="true">Filtro por Producto</a>
+		<a href="/front_mvc/mock_up" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Ir al Mockup</a>
+        <a href="/front_mvc/login" class="btn btn-info btn-lg" tabindex="-1" role="button" aria-disabled="true">Iniciar Sesión</a>
+    </div>
+
+    <!-- Scripts de Bootstrap (JavaScript) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -52,7 +52,7 @@ public class CatalogoController {
         model.addAttribute("productos", productos);
         model.addAttribute("categorias", categorias);
         
-        return "MockUp"; // Nombre exacto del archivo JSP
+        return "mockup"; // Nombre exacto del archivo JSP
     }
     
     @GetMapping("/categorias")

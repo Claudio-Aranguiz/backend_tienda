@@ -36,9 +36,11 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(@NonNull ResourceHandlerRegistry registry) {
         // Manejo adecuado de recursos estáticos
         registry.addResourceHandler("/resources/**")
-                .addResourceLocations("/WEB-INF/resources/");
+                .addResourceLocations("/resources/", "/WEB-INF/resources/")
+                .setCachePeriod(3600); // Cache por 1 hora
 
-        registry.addResourceHandler("/*.html")
-                .addResourceLocations("/");
+        registry.addResourceHandler("/*.html", "/css/**", "/js/**", "/images/**")
+                .addResourceLocations("/", "/css/", "/js/", "/images/")
+                .setCachePeriod(3600);
     }
 }

@@ -135,18 +135,28 @@ Una vez desplegada, accede a través de un navegador:
 
 * Página principal: `http://localhost:8080/front_mvc/`
 * Catálogo de productos: `http://localhost:8080/front_mvc/mock_up`
+* Catálogo alternativo: `http://localhost:8080/front_mvc/mock_up_v2`
 * Administración de productos: `http://localhost:8080/front_mvc/productos`
 * Login: `http://localhost:8080/front_mvc/login`
 
 ## Problemas conocidos
 
-1. **Error 404 en vistas JSP** : Las vistas de productos y categorías pueden presentar errores 404
+1. **Error 500 en vistas JSP**: SOLUCIONADO - Se corrigieron los siguientes problemas:
+   * Conflicto de controladores para el mismo endpoint
+   * Inconsistencia en nombres de vistas
+   * Configuración incorrecta de recursos estáticos
+   * Para más detalles ver el archivo CHANGELOG.md
 
-* Solución: Verificar la existencia de los archivos JSP en la ruta correcta y la configuración del ViewResolver
+2. **Problemas con rutas URL**: Los enlaces deben incluir el contexto de la aplicación `/front_mvc`
+   * Solución: Usar rutas completas como `/front_mvc/productos` en lugar de `/productos`
 
-1. **Problemas con rutas URL** : Los enlaces deben incluir el contexto de la aplicación `/front_mvc`
+3. **Acceso a recursos en WEB-INF**: SOLUCIONADO - Los archivos en WEB-INF no son accesibles directamente
+   * Se movió index.html a la raíz de webapp
+   * Se corrigió la configuración en web.xml
 
-* Solución: Usar rutas completas como `/front_mvc/productos` en lugar de `/productos`
+## Registro de cambios
+
+Consulte el archivo [CHANGELOG.md](CHANGELOG.md) para obtener detalles sobre las últimas actualizaciones y correcciones implementadas.
 
 ## Funcionamiento
 
