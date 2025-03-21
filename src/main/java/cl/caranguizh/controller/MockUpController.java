@@ -13,6 +13,13 @@ import cl.caranguizh.model.Producto;
 import cl.caranguizh.repository.CategoriaRepository;
 import cl.caranguizh.repository.ProductoRepository;
 
+/**
+ * Controlador encargado de manejar las peticiones relacionadas con el mockup
+ * de productos.
+ * 
+ * @version 2.0, 08-12-2021
+ * @since 2.0, 08-12-2021
+ */
 @Controller
 public class MockUpController {
     
@@ -22,6 +29,14 @@ public class MockUpController {
     @Autowired
     private CategoriaRepository categoriaRepository;
     
+    /**
+     * Muestra el mockup de productos.
+     *
+     * @param busqueda Término de búsqueda.
+     * @param categoriaId Identificador de la categoría.
+     * @param model Modelo de la vista.
+     * @return Nombre de la vista.
+    */
     @GetMapping("/mock_up_v2")
     public String mostrarMockUp(
             @RequestParam(required = false) String busqueda,

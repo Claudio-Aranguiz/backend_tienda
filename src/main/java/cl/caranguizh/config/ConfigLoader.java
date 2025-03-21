@@ -1,5 +1,7 @@
 package cl.caranguizh.config;
 
+import java.util.Properties;
+
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -7,8 +9,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
-import java.util.Properties;
-
+/**
+ * Clase de configuración para cargar propiedades de la aplicación.
+ */
 @Configuration
 @PropertySource("classpath:application.properties")
 public class ConfigLoader {
@@ -16,6 +19,10 @@ public class ConfigLoader {
     @Autowired
     private Environment env;
 
+    /**
+     * Cargar las propiedades de la base de datos.
+     * @return
+     */
     @Bean
     public Properties databaseProperties() {
         Properties props = new Properties();
@@ -41,6 +48,10 @@ public class ConfigLoader {
         return props;
     }
     
+    /**
+     * Verificar que las propiedades de la base de datos estén configuradas.
+     * @return
+     */
     @Bean
     public InitializingBean validateConfigurationProperties() {
         return () -> {

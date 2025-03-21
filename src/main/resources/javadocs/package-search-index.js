@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"cl.caranguizh"},{"l":"cl.caranguizh.config"},{"l":"cl.caranguizh.controller"},{"l":"cl.caranguizh.dao"},{"l":"cl.caranguizh.model"},{"l":"cl.caranguizh.repository"},{"l":"cl.caranguizh.service"}];updateSearchResults();

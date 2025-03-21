@@ -5,6 +5,9 @@ import java.util.Optional;
 
 import cl.caranguizh.model.Producto;
 
+/**
+ * Interfaz que define los métodos que debe implementar un repositorio de productos.
+ */
 public interface ProductoRepository {
     List<Producto> findAll();
     Optional<Producto> findById(Integer id);

@@ -1,10 +1,14 @@
 package cl.caranguizh.repository;
 
-import cl.caranguizh.model.Compra;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import cl.caranguizh.model.Compra;
+
+/**
+ * Interfaz que define los métodos que debe implementar un repositorio de compras.
+ */
 public interface CompraRepository {
     List<Compra> findAll();
     Optional<Compra> findById(Integer id);

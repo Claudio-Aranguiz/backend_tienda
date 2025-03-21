@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Clase que representa un producto.
+ */
 public class Producto {
     private Integer id;
     private String nombre;
@@ -14,6 +17,13 @@ public class Producto {
     public Producto() {
     }
     
+    /**
+     * Constructor
+     * @param id
+     * @param nombre
+     * @param precio
+     * @param categoria
+     */
     public Producto(Integer id, String nombre, Integer precio, Categoria categoria) {
         this.id = id;
         this.nombre = nombre;
@@ -62,6 +72,7 @@ public class Producto {
         this.detallesCompra = detallesCompra;
     }
     
+    // Otros métodos
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -2,6 +2,11 @@ package cl.caranguizh.model;
 
 import java.util.Objects;
 
+/**
+ * Clase que representa un detalle de una compra.
+ */
+//  * @param total Monto total de la compra.
+//  */
 public class DetalleCompra {
     private Integer id;
     private Compra compra;
@@ -11,6 +16,14 @@ public class DetalleCompra {
     public DetalleCompra() {
     }
     
+    /**
+     * Constructor de la clase.
+     *
+     * @param id       Identificador del detalle de compra.
+     * @param compra   Compra a la que pertenece el detalle.
+     * @param producto Producto comprado.
+     * @param cantidad Cantidad de productos comprados.
+     */
     public DetalleCompra(Integer id, Compra compra, Producto producto, Integer cantidad) {
         this.id = id;
         this.compra = compra;
@@ -51,7 +64,11 @@ public class DetalleCompra {
         this.cantidad = cantidad;
     }
     
-    // Método helper para calcular el subtotal
+    /**
+     * Calcula el subtotal del detalle.
+     *
+     * @return Subtotal del detalle.
+     */
     public Integer getSubtotal() {
         if (producto != null && cantidad != null) {
             return producto.getPrecio() * cantidad;
@@ -59,6 +76,9 @@ public class DetalleCompra {
         return 0;
     }
     
+    /*
+     * Métodos equals, hashCode y toString
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,6 +91,7 @@ public class DetalleCompra {
     public int hashCode() {
         return Objects.hash(id);
     }
+    
     
     @Override
     public String toString() {

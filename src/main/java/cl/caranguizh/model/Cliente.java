@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Clase que representa un cliente.
+ */
 public class Cliente {
     private Integer id;
     private String nombre;
@@ -13,6 +16,12 @@ public class Cliente {
     public Cliente() {
     }
     
+    /**
+     * Constructor
+     * @param id Identificador del cliente.
+     * @param nombre Nombre del cliente.
+     * @param email Correo electrónico del cliente.
+     */
     public Cliente(Integer id, String nombre, String email) {
         this.id = id;
         this.nombre = nombre;
@@ -52,6 +61,9 @@ public class Cliente {
         this.compras = compras;
     }
     
+    /*
+     * Métodos equals, hashCode y toString
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

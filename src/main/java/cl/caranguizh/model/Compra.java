@@ -5,6 +5,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Clase que representa una compra realizada por un cliente.
+ */
+//  * @param email Correo electrónico del cliente.
+//  */
 public class Compra {
     private Integer id;
     private Cliente cliente;
@@ -15,6 +20,14 @@ public class Compra {
     public Compra() {
     }
     
+    /**
+     * Constructor de la clase.
+     *
+     * @param id          Identificador de la compra.
+     * @param cliente     Cliente que realizó la compra.
+     * @param fechaCompra Fecha en que se realizó la compra.
+     * @param total       Monto total de la compra.
+     */
     public Compra(Integer id, Cliente cliente, Date fechaCompra, Integer total) {
         this.id = id;
         this.cliente = cliente;
@@ -63,6 +76,11 @@ public class Compra {
         this.detalles = detalles;
     }
     
+    /*
+     * Métodos equals, hashCode y toString
+     *
+     * @param total       Monto total de la compra.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

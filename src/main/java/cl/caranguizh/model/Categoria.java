@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Clase que representa una categoría de productos.
+ */
 public class Categoria {
     private Integer id;
     private String nombre;
@@ -12,6 +15,12 @@ public class Categoria {
     public Categoria() {
     }
     
+    /**
+     * Constructor de la clase.
+     *
+     * @param id     Identificador de la categoría.
+     * @param nombre Nombre de la categoría.
+     */
     public Categoria(Integer id, String nombre) {
         this.id = id;
         this.nombre = nombre;
@@ -42,6 +51,9 @@ public class Categoria {
         this.productos = productos;
     }
     
+    /*
+     * Métodos equals, hashCode y toString
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

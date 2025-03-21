@@ -11,6 +11,9 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+/**
+ * Configuración de la aplicación web.
+ */
 @Configuration
 @ComponentScan(basePackages = {"cl.caranguizh"})
 @EnableWebMvc
@@ -23,6 +26,7 @@ public class WebConfig implements WebMvcConfigurer {
         return resolver;
     }
     
+    // Configuración de controladores de vista
     @Override
     public void addViewControllers(@NonNull ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("redirect:/index.html");
@@ -32,6 +36,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/403").setViewName("403");
     }
     
+    // Configuración de recursos estáticos
     @Override
     public void addResourceHandlers(@NonNull ResourceHandlerRegistry registry) {
         // Manejo adecuado de recursos estáticos

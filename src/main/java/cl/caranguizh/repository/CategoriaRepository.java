@@ -1,9 +1,13 @@
 package cl.caranguizh.repository;
 
-import cl.caranguizh.model.Categoria;
 import java.util.List;
 import java.util.Optional;
 
+import cl.caranguizh.model.Categoria;
+
+/**
+ * Interfaz que define los métodos que debe implementar un repositorio de categorías.
+ */
 public interface CategoriaRepository {
     List<Categoria> findAll();
     Optional<Categoria> findById(Integer id);

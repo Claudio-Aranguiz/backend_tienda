@@ -1,9 +1,13 @@
 package cl.caranguizh.repository;
 
-import cl.caranguizh.model.DetalleCompra;
 import java.util.List;
 import java.util.Optional;
 
+import cl.caranguizh.model.DetalleCompra;
+
+/**
+ * Interfaz que define los métodos que debe implementar un repositorio de detalles de compra.
+ */
 public interface DetalleCompraRepository {
     List<DetalleCompra> findAll();
     Optional<DetalleCompra> findById(Integer id);

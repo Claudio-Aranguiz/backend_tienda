@@ -15,6 +15,9 @@ import cl.caranguizh.model.Producto;
 import cl.caranguizh.service.CategoriaService;
 import cl.caranguizh.service.ProductoService;
 
+/**
+ * Controlador para la gestión de productos.
+ */
 @Controller
 @RequestMapping("/productos")
 public class ProductoController {
@@ -28,6 +31,10 @@ public class ProductoController {
         this.categoriaService = categoriaService;
     }
     
+    /*
+     * Muestra la lista de productos, permitiendo filtrar por nombre y categoría.
+     * 
+     */
     @GetMapping
     public String mostrarProductos(
             @RequestParam(required = false) String busqueda,
@@ -54,6 +61,11 @@ public class ProductoController {
         return "productos";
     }
     
+    /*
+     * Muestra el formulario para crear o actualizar un producto.
+     * 
+     * Si se proporciona un ID, se asume que se quiere actualizar el producto con ese ID.
+     */
     @PostMapping
     public String procesarProducto(
             @RequestParam String accion,
@@ -71,6 +83,9 @@ public class ProductoController {
         return "redirect:/productos";
     }
     
+    /*
+     * Crea un nuevo producto.
+     */
     private void crearProducto(String nombre, Integer precio, Integer categoriaId) {
         Categoria categoria = categoriaService.findById(categoriaId);
         Producto producto = new Producto();
@@ -80,6 +95,9 @@ public class ProductoController {
         productoService.save(producto);
     }
     
+    /*
+     * Actualiza un producto existente.
+     */
     private void actualizarProducto(Integer id, String nombre, Integer precio, Integer categoriaId) {
         Producto producto = productoService.findById(id);
         Categoria categoria = categoriaService.findById(categoriaId);

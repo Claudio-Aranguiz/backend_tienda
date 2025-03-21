@@ -16,11 +16,20 @@ import cl.caranguizh.model.Categoria;
 import cl.caranguizh.model.Producto;
 import cl.caranguizh.repository.ProductoRepository;
 
+/**
+ * Implementación del repositorio para la entidad Producto.
+ * Proporciona métodos para acceder y manipular datos de productos en la base de datos.
+ */
 @Repository
 public class ProductoRepositoryImpl implements ProductoRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
+    /**
+     * Constructor que inicializa el repositorio con un JdbcTemplate.
+     * 
+     * @param jdbcTemplate plantilla JDBC para operaciones de base de datos
+     */
     @Autowired
     public ProductoRepositoryImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -41,6 +50,11 @@ public class ProductoRepositoryImpl implements ProductoRepository {
         return producto;
     };
 
+    /**
+     * Recupera todos los productos existentes en la base de datos.
+     * 
+     * @return lista de todos los productos
+     */
     @Override
     public List<Producto> findAll() {
         String sql = "SELECT p.id, p.nombre, p.precio, c.id, c.nombre " +
@@ -49,6 +63,12 @@ public class ProductoRepositoryImpl implements ProductoRepository {
         return jdbcTemplate.query(sql, productoRowMapper);
     }
 
+    /**
+     * Recupera un producto por su identificador.
+     * 
+     * @param id identificador del producto
+     * @return producto con el identificador especificado, o vacío si no existe
+     */
     @Override
     public Optional<Producto> findById(Integer id) {
         String sql = "SELECT p.id, p.nombre, p.precio, c.id, c.nombre " +
@@ -59,6 +79,12 @@ public class ProductoRepositoryImpl implements ProductoRepository {
         return productos.isEmpty() ? Optional.empty() : Optional.of(productos.get(0));
     }
 
+    /**
+     * Recupera un producto por su nombre.
+     * 
+     * @param nombre nombre del producto
+     * @return producto con el nombre especificado, o vacío si no existe
+     */
     @SuppressWarnings("deprecation")
 	@Override
     public List<Producto> findByNombreContaining(String nombre) {
@@ -69,6 +95,12 @@ public class ProductoRepositoryImpl implements ProductoRepository {
         return jdbcTemplate.query(sql, new Object[]{"%" + nombre + "%"}, productoRowMapper);
     }
 
+    /**
+     * Recupera todos los productos de una categoría.
+     * 
+     * @param categoriaId identificador de la categoría
+     * @return lista de productos de la categoría
+     */
     @SuppressWarnings("deprecation")
 	@Override
     public List<Producto> findByCategoriaId(Integer categoriaId) {
@@ -79,6 +111,13 @@ public class ProductoRepositoryImpl implements ProductoRepository {
         return jdbcTemplate.query(sql, new Object[]{categoriaId}, productoRowMapper);
     }
     
+    /**
+     * Recupera todos los productos de una categoría por su nombre.
+     * 
+     * @param categoriaId identificador de la categoría
+     * @param nombre nombre del producto
+     * @return lista de productos de la categoría con el nombre especificado
+     */
     @SuppressWarnings("deprecation")
 	@Override
     public List<Producto> findByCategoriaIdAndNombreContaining(Integer categoriaId, String nombre) {
@@ -89,6 +128,13 @@ public class ProductoRepositoryImpl implements ProductoRepository {
         return jdbcTemplate.query(sql, new Object[]{categoriaId, "%" + nombre + "%"}, productoRowMapper);
     }
 
+    /**
+     * Recupera todos los productos cuyo precio esté entre dos valores.
+     * 
+     * @param min precio mínimo
+     * @param max precio máximo
+     * @return lista de productos cuyo precio está entre los valores especificados
+     */
     @SuppressWarnings("deprecation")
 	@Override
     public List<Producto> findByPrecioBetween(Integer min, Integer max) {
@@ -99,6 +145,11 @@ public class ProductoRepositoryImpl implements ProductoRepository {
         return jdbcTemplate.query(sql, new Object[]{min, max}, productoRowMapper);
     }
 
+    /**
+     * Guarda un producto en la base de datos.
+     * 
+     * @param producto producto a guardar
+     */
     @Override
     public void save(Producto producto) {
         if (producto.getId() == null) {
@@ -107,6 +158,11 @@ public class ProductoRepositoryImpl implements ProductoRepository {
         update(producto);
     }
 
+    /**
+     * Inserta un nuevo producto en la base de datos.
+     * 
+     * @param producto producto a insertar
+     */
     @SuppressWarnings("null")
     private void insert(Producto producto) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -124,6 +180,11 @@ public class ProductoRepositoryImpl implements ProductoRepository {
         producto.setId(newId);
     }
 
+    /**
+     * Actualiza un producto en la base de datos.
+     * 
+     * @param producto producto a actualizar
+     */
     private void update(Producto producto) {
         String sql = "UPDATE productos SET nombre = ?, precio = ?, categoria_id = ? WHERE id = ?";
         jdbcTemplate.update(
@@ -135,12 +196,24 @@ public class ProductoRepositoryImpl implements ProductoRepository {
         );
     }
 
+    /**
+     * Elimina un producto de la base de datos por su identificador.
+     * 
+     * @param id identificador del producto a eliminar
+     */
     @Override
     public void deleteById(Integer id) {
         String sql = "DELETE FROM productos WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
 
+    /**
+     * Recupera todos los productos de una categoría por su identificador o nombre.
+     * 
+     * @param categoriaId identificador de la categoría
+     * @param nombre nombre del producto
+     * @return lista de productos de la categoría con el identificador o nombre especificado
+     */
 	@SuppressWarnings("deprecation")
     @Override
     public List<Producto> findByCategoriaIdOrNombreContaining(Integer categoriaId, String nombre) {
@@ -152,6 +225,7 @@ public class ProductoRepositoryImpl implements ProductoRepository {
         return jdbcTemplate.query(sql, new Object[]{categoriaId, "%" + nombre + "%"}, productoRowMapper);
     }
 
+    // Getters y setters
     public RowMapper<Producto> getProductoRowMapper() {
         return productoRowMapper;
     }
